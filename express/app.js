@@ -31,6 +31,23 @@ app.route('/creatures')
     })
 })
 
+app.route("/creatures/:name")
+
+.get((req, res) => {
+
+    con.query("SELECT * FROM creatures WHERE name = " + mysql.escape(req.params.name), (err, result) => {
+        if(err) console.log(err);
+        res.json(result);
+    })
+})
+
+.get((req, res) => {
+    con.query("SELECT * FROM creatures", (err, result, fields) => {
+        if (err) console.log(err);
+        res.json(result);
+    })
+})
+
 app.listen(port, () => {
   console.log(`ARK API listening on port ${port}`);
 })
