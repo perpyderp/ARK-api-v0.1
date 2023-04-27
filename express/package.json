@@ -1,0 +1,25 @@
+{
+  "name": "ark-api",
+  "version": "1.0.0",
+  "description": "RESTful ARK API using Express framework",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perpyderp/ARK-api.git"
+  },
+  "author": "Perp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/perpyderp/ARK-api/issues"
+  },
+  "homepage": "https://github.com/perpyderp/ARK-api#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mysql2": "^3.2.4"
+  }
+}
