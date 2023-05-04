@@ -13,13 +13,14 @@ import os
 from dotenv import load_dotenv
 
 # Loading environment files from .env
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(__file__), '..', '.env')
+load_dotenv(dotenv_path=dotenv_path)
 
-HOST = os.getenv('HOST')
-USER = os.getenv('USER')
-PASSWORD = os.getenv('PASSWORD')
+HOST = os.getenv('DB_HOST')
+USER = os.getenv('DB_USER')
+PASSWORD = os.getenv('DB_PASSWORD')
 
-CREATURE_DB = "creatureDB"
+ARK_DB = "arkDB"
 
 # Connect to database based using environment variables
 db = mysql.connector.connect(
@@ -32,10 +33,10 @@ db = mysql.connector.connect(
 mycursor = db.cursor()
 
 # Creating creature database if doesn't exist
-mycursor.execute("CREATE DATABASE IF NOT EXISTS " + CREATURE_DB)
+mycursor.execute("CREATE DATABASE IF NOT EXISTS " + ARK_DB)
 
-# Selecting creature database
-db.database = CREATURE_DB
+# Selecting Ark database
+db.database = ARK_DB
 
 mycursor.execute("""CREATE TABLE IF NOT EXISTS `creatures` 
 (`id` INT NOT NULL AUTO_INCREMENT,`name` VARCHAR(255) NOT NULL,`diet` VARCHAR(255) NULL,`temperament` VARCHAR(255) NULL,`tameable` VARCHAR(255) NULL,`rideable` VARCHAR(255) NULL,
